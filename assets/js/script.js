@@ -58,66 +58,83 @@ btnRegistrar.addEventListener("click", async() => {
   }
 });
 
-//3)función agregar ficha
+//3)función agregar ficha (sonido=ok)
 function addCard(){
   registro.innerHTML="";
 
 animalList.forEach((element, i)=>{
 
-registro.innerHTML += `
-<div class="card bg-dark" style="width: 12.5rem; height: 12.5 rem;">
-  <img src="./assets/imgs/${imagenSrc}" class="card-img-top img-thumbnail" alt="${element.name}" type="button" data-bs-toggle="modal" data-bs-target="ficha" onclick="verFicha('${i}')" id="notas">
-  <div class="d-grid mx-auto">
-    <button onclick="playSound('${sonido}')" type="button" class="btn btn-secondary"><img height="25px" src="./assets/imgs/audio.svg"</button>
-  </div>
+registro.innerHTML +=
+`<div class="card bg-dark m-2 border-0" style="width: 12.5rem; height: 12.5 rem;">
+<img src="./assets/imgs/${element.img}" class="card-img-top" alt="${element.name}" type="button" data-bs-toggle="modal" data-toggle="modal" data-target="#exampleModal" onclick="verFicha('${i}')" id="notas">
+<div class="d-grid m-0">
+  <button onclick="playSound('${sonido}')" type="button" class="btn btn-secondary w-100"><img height="25px" src="./assets/imgs/audio.svg"</button>
 </div>
-`;
+</div>` 
+
+// <div class="card bg-dark" style="width: 12.5rem; height: 12.5 rem;">
+//   <img src="./assets/imgs/${element.img}" class="card-img-top img-thumbnail" alt="${element.name}" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="verFicha('${i}')">
+//   <div class="d-grid mx-auto">
+//     <button onclick="playSound('${element.sonido}')" type="button" class="btn btn-secondary"><img height="25px" src="./assets/imgs/audio.svg"</button>
+//   </div>
+// </div>
+// `;
 
   });
 }
 
-window.playSound = ()=>{
-  let animal= animalList.find((element) => element.name === animal);
-  if (tipo == 'Leon') {
-    animal.rugir()
-  }else if(tipo == 'Lobo'){
-    animal.aullar()
-  }else if(tipo == 'Oso'){
-    animal.gruñir()
-  }else if(tipo == 'Serpiente'){
-    animal.sisear()
-  } else {
-    animal.chillar()
-  }
-}
-
+// window.playSound = ()=>{
+//   let animal= animalList.find((element) => element.name === animal);
+//   console.log(animal)
+//   if (tipo == 'Leon') {
+//     animal.rugir()
+//   }else if(tipo == 'Lobo'){
+//     animal.aullar()
+//   }else if(tipo == 'Oso'){
+//     animal.gruñir()
+//   }else if(tipo == 'Serpiente'){
+//     animal.sisear()
+//   } else {
+//     animal.chillar()
+//   }
+// }
+window.playSound = (tipo) => {
+  const sound = new Audio(`./assets/sounds/${tipo}`);
+  sound.play();
+};
 
 //4)modal
 
 //función mostrar datos en tarjetas
 window.verFicha=(i)=>{
-  // modalBody.innerHTML='';
-  const modalBody= document.getElementById("notas")[0];
-  animalList[i];
-  modalBody.innerHTML = `<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-  <div class="modal fade" id="ficha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <img src='./assets/imgs/${animalList._img}'>
-        <h2>${animalList._nombre}</h2>
-        <p>${animalList._edad}</p>
-        <p>${animalList._comentarios}</p>
-      </div>
 
-    </div>
-  </div>
+  const modalBody= document.getElementsByClassName("modal-body")[0];
+  const ani =animalList[i];
+  modalBody.innerHTML = 
+`<div class="card bg-dark w-100 mx-auto text-white border-0" style="width: 18rem;">
+<img src="./assets/imgs/${ani.img}" class="card-img-top " alt="${ani.nombre}">
+<div class="card-body">
+  <h5 class="card-title">${ani.nombre}</h5>
+  <p class="card-text"><small class="text-body-secondary">${ani.edad}</small></p>
+  <hr class="opacity-100 filete">
+  <p class="card-text">${ani.comentarios}</p>
 </div>
-</div>`;
+</div>`
+;
 
 }
 
+
+//   `<div class="card w-100 m-auto bg-dark text-white border-0">
+//   <img
+//     src="./assets/imgs/${ani.img}"
+//     class="d-block m-auto w-100"
+//   />
+//   <div class="card-body text-center">
+//     <h6 class="card-text ">${ani.edad}</h6>
+//     <h6 class="card-text m-0">Comentarios</h6>
+//     <hr/>
+//     <p>${ani.comentarios}</p>
+//   </div>
+// </div>
+// </div>`

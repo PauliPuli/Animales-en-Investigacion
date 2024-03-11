@@ -46,7 +46,12 @@ body {
 /* Modal */
 
 .modal-dialog{
-    max-width: 85% !important;
+    /* max-width: 85% !important;
+    margin: auto; */
 }
 
+
+.filete{
+  border-color: white;
+}
 
