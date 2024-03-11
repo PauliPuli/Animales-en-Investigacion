@@ -1,5 +1,5 @@
 import Animal from "./Animal.js";
-const audioPlayer= document.getElementById('player');
+let audioPlayer= document.getElementById('player');
 
 class Leon extends Animal {
     constructor(nombre, edad, img, comentarios, sonido){
@@ -7,8 +7,9 @@ class Leon extends Animal {
     }
     rugir(){
         console.log(getSonido());
-        audioPlayer.src = `${this._sonido}`;
-        return `El ${this._name} ruge`;
+        audioPlayer.src = `./assets/sounds/${this._sonido}`;
+        audioPlayer.play();
+        // return `El ${this._name} ruge`;
     }
 }
 class Lobo extends Animal {
@@ -17,8 +18,9 @@ class Lobo extends Animal {
     }
     aullar(){
         console.log(getSonido());
-        audioPlayer.src = `${this._sonido}`;
-        return `El ${this._name} aulla`;
+        audioPlayer.src = `./assets/sounds/${this._sonido}`;
+        audioPlayer.play();
+        // return `El ${this._name} aulla`;
     }
 }
 
@@ -28,8 +30,9 @@ class Oso extends Animal {
     }
     gruñir(){
         console.log(getSonido());
-        audioPlayer.src = `${this._sonido}`;
-        return `El ${this._name} gruñe`;
+        audioPlayer.src = `./assets/sounds/${this._sonido}`;
+        audioPlayer.play();
+        // return `El ${this._name} gruñe`;
     }
 }
 
@@ -39,8 +42,9 @@ class Serpiente extends Animal {
     }
     sisear(){
         console.log(getSonido());
-        audioPlayer.src = `${this._sonido}`;
-        return `El ${this._name} sisea`;
+        audioPlayer.src = `./assets/sounds/${this._sonido}`;
+        audioPlayer.play();
+        // return `El ${this._name} sisea`;
     }
 }
 
@@ -51,7 +55,8 @@ class Aguila extends Animal {
     chillar(){
         console.log(getSonido());
         audioPlayer.src = `${this._sonido}`;
-        return `El ${this._name} chilla`;
+        audioPlayer.play();
+        // return `El ${this._name} chilla`;
     }
 }
 
