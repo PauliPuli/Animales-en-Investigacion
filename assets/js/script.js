@@ -23,7 +23,7 @@ animalSelect.addEventListener("change", async () => {
   imagenSrc = animalData.imagen;
   sonido= animalData.sonido
 
-  preview.style.backgroundImage = `url(./assets/imgs/${imagenSrc})`;
+  preview.style.backgroundImage = `url(../imgs/${imagenSrc})`;
 });
 
 // 2)Evento btn registrar (ok)
@@ -66,7 +66,7 @@ animalList.forEach((element, i)=>{
 
 registro.innerHTML +=
 `<div class="card bg-dark m-2 border-0" style="width: 12.5rem; height: 12.5 rem;">
-<img src="./assets/imgs/${element.img}" class="card-img-top" alt="${element.name}" type="button" data-bs-toggle="modal" data-toggle="modal" data-target="#exampleModal" onclick="verFicha('${i}')" id="notas">
+<img src="../imgs/${element.img}" class="card-img-top" alt="${element.name}" type="button" data-bs-toggle="modal" data-toggle="modal" data-target="#exampleModal" onclick="verFicha('${i}')" id="notas">
 <div class="d-grid m-0">
   <button onclick="playSound('${sonido}')" type="button" class="btn btn-secondary w-100"><img height="25px" src="./assets/imgs/audio.svg"</button>
 </div>
@@ -77,7 +77,7 @@ registro.innerHTML +=
 
 
 window.playSound = (tipo) => {
-  const sound = new Audio(`./assets/sounds/${tipo}`);
+  const sound = new Audio(`../sounds/${tipo}`);
   sound.play();
 };
 
@@ -90,7 +90,7 @@ window.verFicha=(i)=>{
   const ani =animalList[i];
   modalBody.innerHTML = 
 `<div class="card bg-dark w-100 mx-auto text-white border-0" style="width: 18rem;">
-<img src="./assets/imgs/${ani.img}" class="card-img-top " alt="${ani.nombre}">
+<img src="../imgs/${ani.img}" class="card-img-top " alt="${ani.nombre}">
 <div class="card-body">
   <h5 class="card-title">${ani.nombre}</h5>
   <p class="card-text"><small class="text-body-secondary">${ani.edad}</small></p>
